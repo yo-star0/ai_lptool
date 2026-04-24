@@ -1,0 +1,29 @@
+# LP画像 → レイヤー分割PSD 変換ツール
+# CPU版（どこでも動く最小構成）
+# CUDA環境では requirements-gpu.txt を併用
+
+# Web UI
+gradio>=4.0.0
+
+# OCR (日本語対応)
+paddlepaddle>=2.6.0
+paddleocr>=2.7.0
+
+# 人物/商品の切り抜き
+rembg>=2.0.50
+onnxruntime>=1.16.0
+
+# 背景インペインティング
+simple-lama-inpainting>=0.1.2
+
+# PSD出力
+psd-tools>=1.9.30
+
+# 画像処理
+Pillow>=10.0.0
+numpy>=1.24.0
+opencv-python>=4.8.0
+
+# PyTorch (simple-lama-inpainting が依存)
+torch>=2.0.0
+torchvision>=0.15.0

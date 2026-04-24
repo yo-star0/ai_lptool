@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+output/*
+!output/.gitkeep
+samples/*
+!samples/.gitkeep
+!samples/README.md
+
+# Gradio
+.gradio/
+flagged/
+
+# Model weights (download on first run)
+models/
+*.onnx
+*.pth
+*.pdmodel
+*.pdiparams
+*.pdiparams.info
+.paddleocr/
+.u2net/
+
+# Temporary PSDs
+*.psd
+
+# Logs
+*.log
+logs/

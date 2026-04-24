@@ -1,0 +1,19 @@
+# CUDA 12.1 向け追加依存
+# インストール手順（Windows PowerShell）:
+#
+#   1) まず CPU版を揃える
+#      pip install -r requirements.txt
+#
+#   2) torch を CUDA 12.1 版に差し替え
+#      pip uninstall -y torch torchvision
+#      pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+#
+#   3) paddlepaddle を GPU 版に差し替え (CUDA 12 系)
+#      pip uninstall -y paddlepaddle
+#      pip install paddlepaddle-gpu==2.6.2 -f https://www.paddlepaddle.org.cn/whl/windows/mkl/avx/stable.html
+#
+#   4) rembg の GPU プロバイダを追加
+#      pip install onnxruntime-gpu
+#
+# ※ 2026年時点の paddlepaddle-gpu が CUDA 12.1 を正式サポートしていない場合は、
+#    CUDA 11.8 版 (paddlepaddle-gpu==2.6.2.post118) を使うか、CPU版で運用してください。
