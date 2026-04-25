@@ -22,7 +22,8 @@ def get_logger(name: str) -> logging.Logger:
 
 
 def load_image(path: str | Path) -> Image.Image:
-    img = Image.open(path).convert("RGBA")
+    """画像をRGBで読み込む."""
+    img = Image.open(path).convert("RGB")
     return img
 
 
@@ -57,3 +58,24 @@ class BBox:
         x2 = min(max_w, self.x2 + pad)
         y2 = min(max_h, self.y2 + pad)
         return BBox(x, y, x2 - x, y2 - y)
+
+    @classmethod
+    def from_polygon(cls, points: np.ndarray) -> "BBox":
+        """4点ポリゴンから軸並行bboxを作る."""
+        xs = points[:, 0]
+        ys = points[:, 1]
+        x = int(np.floor(xs.min()))
+        y = int(np.floor(ys.min()))
+        x2 = int(np.ceil(xs.max()))
+        y2 = int(np.ceil(ys.max()))
+        return cls(x, y, max(1, x2 - x), max(1, y2 - y))
+
+
+def dilate_mask(mask: np.ndarray, radius: int) -> np.ndarray:
+    """2値マスクを膨張させる. radius<=0なら何もしない."""
+    if radius <= 0:
+        return mask
+    import cv2
+
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * radius + 1, 2 * radius + 1))
+    return cv2.dilate(mask, kernel)
