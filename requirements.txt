@@ -2,8 +2,8 @@
 # CPU版（どこでも動く最小構成）
 # CUDA環境では requirements-gpu.txt を併用
 
-# Web UI
-gradio>=4.0.0
+# Web UI (4.x で動作確認済み。5/6.x は API 破壊変更があるため避ける)
+gradio>=4.20,<5.0
 
 # OCR (日本語対応)
 paddlepaddle>=2.6.0
